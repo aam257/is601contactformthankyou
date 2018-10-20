@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('pages.home');
 });
 
 Route::get('/about', function () {
@@ -24,5 +24,13 @@ Route::get('/contact', function () {
 });
 
 Route::post('/contact', function () {
-    return view('pages.contact');
+
+    echo 'Thank you for contacting us!!!<br>';
+
+    $data = request()->all();
+
+    echo "Name: " . $data['name'] . '<br>';
+    echo "Message: " . $data['message'] . '<br>';
+    echo "Email: " . $data['email'] . '<br>';
+
 });
