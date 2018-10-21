@@ -11,26 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', 'PagesController@home')->name('home');
+Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::post('/contact', 'PagesController@store')->name('contact.store');
+Route::get('/thankyou/{name}', 'PagesController@thankyou')->name('thankyou');
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
 
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
-
-Route::post('/contact', function () {
-
-    echo 'Thank you for contacting us!!!<br>';
-
-    $data = request()->all();
-
-    echo "Name: " . $data['name'] . '<br>';
-    echo "Message: " . $data['message'] . '<br>';
-    echo "Email: " . $data['email'] . '<br>';
-
-});
